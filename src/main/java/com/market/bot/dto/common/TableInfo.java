@@ -1,5 +1,6 @@
 package com.market.bot.dto.common;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TableInfo {
@@ -10,7 +11,7 @@ public class TableInfo {
 
     public TableInfo(String tableName) {
         this.tableName = tableName;
-        this.columns = columns;
+        this.columns = new ArrayList<>();
     }
 
     public void addColumn(ColumnInfo columnInfo) {
