@@ -1,17 +1,21 @@
 package com.market.bot.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Time;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToMany;
+
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "sys_user")
 public class SysUser {
 
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String username;
@@ -25,6 +29,14 @@ public class SysUser {
     private Timestamp lastLoginTime;
 
     private String lastLoginIp;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "sys_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<SysRole> roles = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -82,6 +94,14 @@ public class SysUser {
         this.lastLoginIp = lastLoginIp;
     }
 
+    public Set<SysRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<SysRole> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "SysUser{" +
@@ -92,6 +112,7 @@ public class SysUser {
                 ", enabled='" + enabled + '\'' +
                 ", lastLoginTime=" + lastLoginTime +
                 ", lastLoginIp='" + lastLoginIp + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }

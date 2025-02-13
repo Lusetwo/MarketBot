@@ -13,11 +13,11 @@ public class MetadataTestRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        extractor.extractTableInfo().forEach(table -> {
-            System.out.println("Table: " + table.getTableName());
-            table.getColumns().forEach(column -> {
-                System.out.println(" - Column: " + column.getName() + " (" + column.getType() + ")");
-            });
-        });
+//        extractor.extractTableInfo().forEach(table -> {
+//            System.out.println("Table: " + table.getTableName());
+//            table.getColumns().forEach(column -> {
+//                System.out.println(" - Column: " + column.getName() + " (" + column.getType() + ")");
+//            });
+//        });
     }
 }
