@@ -2,7 +2,7 @@ package com.market.bot.common;
 
 import java.io.Serializable;
 
-public class ApiResponse<T> implements Serializable {
+public class Results<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int code; //状态码
@@ -16,10 +16,10 @@ public class ApiResponse<T> implements Serializable {
     private long elapsedTime; //秦秋的处理时间(毫秒)
 
     //无参构造函数
-    public ApiResponse() {}
+    public Results() {}
 
     //构造函数
-    public ApiResponse(int code, String message, long timestamp, long elapsedTime) {
+    public Results(int code, String message, long timestamp, long elapsedTime) {
         this.code = code;
         this.message = message;
         this.timestamp = timestamp;
@@ -27,23 +27,23 @@ public class ApiResponse<T> implements Serializable {
     }
 
     //成功返回的数据
-    public static <T> ApiResponse<T> success(T data,long elapsedTime) {
-        return new ApiResponse<>(200, "success", System.currentTimeMillis(), elapsedTime);
+    public static <T> Results<T> success(T data, long elapsedTime) {
+        return new Results<>(200, "success", System.currentTimeMillis(), elapsedTime);
     }
 
     //成功但不返回数据
-    public static ApiResponse<Void> success(long elapsedTime) {
-        return new ApiResponse<>(200, "success", System.currentTimeMillis(), elapsedTime);
+    public static Results<Void> success(long elapsedTime) {
+        return new Results<>(200, "success", System.currentTimeMillis(), elapsedTime);
     }
 
     //错误返回
-    public static ApiResponse<Void> error(int code,String message,long elapsedTime) {
-        return new ApiResponse<>(code,message,System.currentTimeMillis(),elapsedTime);
+    public static Results<Void> error(int code, String message, long elapsedTime) {
+        return new Results<>(code,message,System.currentTimeMillis(),elapsedTime);
     }
 
     // 错误返回（没有数据）
-    public static ApiResponse<Void> error(String message, long elapsedTime) {
-        return new ApiResponse<>(500, message, System.currentTimeMillis(), elapsedTime);
+    public static Results<Void> error(String message, long elapsedTime) {
+        return new Results<>(500, message, System.currentTimeMillis(), elapsedTime);
     }
 
 

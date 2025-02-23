@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "sys_user_role")
-public class SysUserRole {
+public class SysRoleUser {
 
     private Long userId;
 

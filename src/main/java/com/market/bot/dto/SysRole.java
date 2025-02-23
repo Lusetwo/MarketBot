@@ -14,6 +14,8 @@ public class SysRole {
 
     private String name;
 
+    private String description;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "sys_role_permission",
@@ -21,6 +23,7 @@ public class SysRole {
             inverseJoinColumns = @JoinColumn(name = "permission_id")
     )
     private Set<SysPermission> permissions = new HashSet<>();
+
 
     public Long getId() {
         return id;
@@ -38,11 +41,29 @@ public class SysRole {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<SysPermission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Set<SysPermission> permissions) {
+        this.permissions = permissions;
+    }
+
     @Override
     public String toString() {
         return "SysRole{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", permissions=" + permissions +
                 '}';
     }
 }

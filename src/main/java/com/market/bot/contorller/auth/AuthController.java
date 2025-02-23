@@ -1,6 +1,6 @@
 package com.market.bot.contorller.auth;
 
-import com.market.bot.common.ApiResponse;
+import com.market.bot.common.Results;
 import com.market.bot.common.enums.HttpStatusEnum;
 import com.market.bot.utils.token.JwtUtil;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ public class AuthController {
 
 
     @PostMapping("/v1/login")
-    public ApiResponse login(@RequestParam String username, @RequestParam String password) {
+    public Results login(@RequestParam String username, @RequestParam String password) {
         long start = System.currentTimeMillis();
         try{
 
@@ -43,10 +43,10 @@ public class AuthController {
             String token = jwtUtil.generateToken(userDetails.getUsername());
 
             long end = System.currentTimeMillis();
-            return ApiResponse.success(token,end-start);
+            return Results.success(token,end-start);
         }catch (Exception e){
             long end = System.currentTimeMillis();
-            return ApiResponse.error(HttpStatusEnum.UNAUTHORIZED.getDescription(),end-start);
+            return Results.error(HttpStatusEnum.UNAUTHORIZED.getDescription(),end-start);
         }
     }
 

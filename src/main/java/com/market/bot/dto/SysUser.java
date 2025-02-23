@@ -18,9 +18,15 @@ public class SysUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String loginId;
+
     private String username;
 
     private String password;
+
+    private String headImgUrl;
+
+    private String telephone;
 
     private String email;
 
@@ -46,6 +52,14 @@ public class SysUser {
         this.id = id;
     }
 
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -60,6 +74,22 @@ public class SysUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getHeadImgUrl() {
+        return headImgUrl;
+    }
+
+    public void setHeadImgUrl(String headImgUrl) {
+        this.headImgUrl = headImgUrl;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getEmail() {
@@ -106,8 +136,11 @@ public class SysUser {
     public String toString() {
         return "SysUser{" +
                 "id=" + id +
+                ", loginId='" + loginId + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", headImgUrl='" + headImgUrl + '\'' +
+                ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
                 ", enabled='" + enabled + '\'' +
                 ", lastLoginTime=" + lastLoginTime +
